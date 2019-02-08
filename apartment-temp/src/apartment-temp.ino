@@ -30,9 +30,9 @@ void loop() {
     humidity = dht.getHumidity();
     
     // Publish data
-    Spark.publish("temperature", String(temperature));
+    Particle.publish("temperature", String(temperature));
     delay(2000);
-    Spark.publish("humidity", String(humidity));
+    Particle.publish("humidity", String(humidity));
     delay(2000);
     
 }
