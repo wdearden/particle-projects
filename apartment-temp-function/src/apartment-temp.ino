@@ -32,7 +32,7 @@ void loop() {
     humidity = dht.getHumidity();
 
     Particle.variable("temperature", temperature);
-    Particle.variable("humidity", temperature); 
+    Particle.variable("humidity", humidity); 
 }
 
 int getTemperature(String command) {
