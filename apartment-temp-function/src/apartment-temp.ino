@@ -6,9 +6,9 @@
 #define DHTTYPE DHT11
 
 // Variables
+int power = D6;
 int temperature;
 int humidity;
-int power = D6;
 
 // DHT sensor
 DHT dht(DHTPIN, DHTTYPE);
@@ -19,20 +19,26 @@ void setup() {
 
     // Start DHT sensor
     dht.begin();
+
+    Particle.function("getTemperature", getTemperature);
+    Particle.function("getHumidity", getHumidity);
 }
 
-void loop() {
-    
+void loop() {   
     // Temperature measurement
     temperature = dht.getTempCelcius();
     
     // Humidity measurement
     humidity = dht.getHumidity();
-    
-    // Publish data
-    Particle.publish("temperature", String(temperature));
-    delay(2000);
-    Particle.publish("humidity", String(humidity));
-    delay(2000);
-    
+
+    Particle.variable("temperature", temperature);
+    Particle.variable("humidity", temperature); 
+}
+
+int getTemperature(String command) {
+    return dht.getTempCelcius();
+}
+
+int getHumidity(String command) {
+    return dht.getHumidity();
 }
