@@ -21,24 +21,26 @@ void setup() {
     dht.begin();
 
     Particle.function("getTemperature", getTemperature);
+    Particle.function("getTemperature2", getTemperature2);
     Particle.function("getHumidity", getHumidity);
+    Particle.function("getHumidity2", getHumidity2);
 }
 
-void loop() {   
-    // Temperature measurement
-    temperature = dht.getTempCelcius();
-    
-    // Humidity measurement
-    humidity = dht.getHumidity();
-
-    Particle.variable("temperature", temperature);
-    Particle.variable("humidity", humidity); 
+void loop() {
 }
 
 int getTemperature(String command) {
-    return dht.getTempCelcius();
+    return dht.getTempFarenheit();
+}
+
+int getTemperature2(String command) {
+    return dht.getTempCelcius()*10;
 }
 
 int getHumidity(String command) {
     return dht.getHumidity();
+}
+
+int getHumidity2(String command) {
+    return dht.getHumidity()*10;
 }
