@@ -3,7 +3,7 @@
 
 // DHT parameters
 #define DHTPIN D7
-#define DHTTYPE DHT11
+#define DHTTYPE DHT22
 
 // Variables
 int power = D6;

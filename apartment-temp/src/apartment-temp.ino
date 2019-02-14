@@ -3,7 +3,7 @@
 
 // DHT parameters
 #define DHTPIN D7
-#define DHTTYPE DHT11
+#define DHTTYPE DHT22
 
 // Variables
 int temperature;
@@ -24,7 +24,7 @@ void setup() {
 void loop() {
     
     // Temperature measurement
-    temperature = dht.getTempCelcius();
+    temperature = dht.getTempFarenheit();
     
     // Humidity measurement
     humidity = dht.getHumidity();
@@ -32,7 +32,7 @@ void loop() {
     // Publish data
     Particle.publish("temperature", String(temperature));
     delay(2000);
-    Particle.publish("humidity", String(humidity));
-    delay(2000);
+    //Particle.publish("humidity", String(humidity));
+    //delay(2000);
     
 }
