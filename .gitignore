@@ -1,5 +1,7 @@
 platform-upload
+uptake-client
 *.db
 *.Rproj
 *.Rproj.user
 *.bin
+.vscode
